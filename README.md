@@ -2,7 +2,6 @@
 
 ## Запуск:
 1) bundle install
-<br>
 2) rails db:migrate 
 <br>
 3) rails db:seed 
