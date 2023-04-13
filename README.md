@@ -1,7 +1,6 @@
 # Rails API & React (Todolist)
 
 ## Запуск:
-<br>
 1) bundle install
 <br>
 2) rails db:migrate 
