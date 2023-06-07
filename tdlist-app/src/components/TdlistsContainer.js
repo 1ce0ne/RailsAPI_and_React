@@ -11,7 +11,7 @@ class TdlistsContainer extends Component {
 	  }
 	
 	  loadTdlists() {
-		axios.get('/api/version1/tdlists')
+		axios.get('http://localhost:3000/api/version1/tdlists')
 		.then(res => {
 		  this.setState({tdlists: res.data})
 		})
@@ -20,7 +20,7 @@ class TdlistsContainer extends Component {
 
 	  newTdlist = (e) => {
 		if (e.key === 'Enter' && !(e.target.value === '')) {
-		  axios.post('/api/version1/tdlists', {tdlist: {title: e.target.value}})
+		  axios.post('http://localhost:3000/api/version1/tdlists', {tdlist: {title: e.target.value}})
 		  .then(res => {
 			const tdlists = update(this.state.tdlists, {
 			  $splice: [[0, 0, res.data]]
@@ -41,7 +41,7 @@ class TdlistsContainer extends Component {
 	  }
 
 	  modifyTdlist = (e, id) => {
-		axios.put(`/api/version1/tdlists/${id}`, {tdlist: {done: e.target.checked}})
+		axios.put(`http://localhost:3000/api/version1/tdlists/${id}`, {tdlist: {done: e.target.checked}})
 		.then(res => {
 		  const tdlistIndex = this.state.tdlists.findIndex(x => x.id === res.data.id)
 		  const tdlists = update(this.state.tdlists, {
@@ -55,7 +55,7 @@ class TdlistsContainer extends Component {
 	  }
 
 	  removeTdlist = (id) => {
-		axios.delete(`/api/version1/tdlists/${id}`)
+		axios.delete(`http://localhost:3000/api/version1/tdlists/${id}`)
 		.then(res => {
 		  const tdlistIndex = this.state.tdlists.findIndex(x => x.id === id)
 		  const tdlists = update(this.state.tdlists, {
